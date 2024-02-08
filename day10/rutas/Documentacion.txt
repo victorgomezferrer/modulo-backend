@@ -1,0 +1,15 @@
+Wellcome a la documentacion de la app HOTEL
+
+Aqui encontraremos el entry point que esta en app.js, dentro de el encontraremos las instancias de los routers que contienen las rutas
+
+las rutas son las siguientes:
+
+GET/cliente = todos los clientes registrados en mi base de datos
+POST/cliente = Crear un nuevo cliente siguiendo el Schema siguiente: nombre:"String",apellido: "String",dni:"String"
+
+GET/habitaciones = todas las habitaciones de mi base de datos
+POST/habitaciones = Crear una nueva habitacion siguiendo el Schema siguiente: numero:`valor numerico`, estado:"String"
+
+GET/reservas = todas las reservas de mi base de datos
+POST/checkin = Crear una nueva reserva en mi base de datos siguiendo el Schema siguiente: cliente:`DNI del cliente previamente registrado`,habitacion: `numero de habitacion que en el Schema habitacion hemos definido como numero:`, fechaCheckin:"Strign",fechaCheckout:"String"
+PUT/checkout = Modificar una reserva en Habitaciones db y en Reservas db, con el dni modifica el estado de habitacion y el estado de Reserva vinculados

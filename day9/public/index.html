@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/subir" method="POST" enctype="multipart/form-data">
+        <input type="file" name="archivo">
+        <button type="submit">Subir</button>
+    </form>
+    <div id="fotos"></div>
+
+    <!-- <form >
+        <input id="url" type="hidden" name="url" value="${image.url}">
+         <button oneclick=${borrar()}>Borrar</button>
+                </form> -->
+
+    <script>
+        fetch('/imagenes')
+            .then(response => response.json())
+            .then(data => {
+                let salida = ""
+                data.forEach(image => {
+                    console.log(image)
+                    salida += `
+                                <img src="${image.ruta}"></div>
+                                <form action="/descarga" method="POST">
+                                    <input type="hidden" name="url" value="${image.url}">
+                             <button type="submit"">Descargar</button> </form>
+                           
+                                `
+                })
+
+                document.getElementById('fotos').innerHTML =salida
+
+            })
+            //     let url = document.getElementById('url')
+            // fetch('/borrar',borrar(), {
+            //     method: "DELETE",
+            //     headers: {"Content-Type": "application/json"},
+            // //     body: JSON.stringify(url)
+            // })
+    </script>
+</body>
+
+</html>

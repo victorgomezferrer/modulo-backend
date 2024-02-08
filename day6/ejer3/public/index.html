@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="">Buscar serie
+            <input type="text" name="titulo" id="formTitulo">
+            <button type="button" onclick="buscar()">Buscar</button>
+        </label>
+        <form action="/api/nuevaSerie" method="post">
+            <label for="">Añadir serie
+                <input type="text" name="titulo" id="formTituloAnyadirNombre">Nombre
+                <input type="text" name="PLataforma" id="formTituloAnyadirPlataforma">Plataforma
+                <input type="text" name="Nota" id="formTituloAnyadirNota">Nota
+                <button type="submit">Añadir</button>
+            </label>
+        </form>
+        <div id="seriesDiv"></div>
+        <script>
+       function buscar(){
+        fetch(`/api/${document.getElementById('formTitulo').value}`)
+            .then((res)=>res.json())
+            .then((datos)=>{
+                console.log(datos)
+            })
+       }
+        </script>
+</body>
+
+</html>

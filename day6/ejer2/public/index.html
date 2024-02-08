@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <button type="button" onclick="leer()"></button>
+   <button type="button" onclick="borrar()"></button>
+    <div id="lista"></div>
+    <script>
+        fetch('api/libros')
+        .then((res)=>res.json())
+        .then((datos)=>{
+            let salida= ''
+            datos.results.forEach(libro=>{
+              salida+=  ` <li>${Titulo}<button type="button" onclick="leer('${titulo}'')"></button>
+   <button type="button" onclick="borrar()"></button></li>`
+            })
+            document.getElementById('lista').innerHTML = salida
+        })
+        function leer(titulo){
+            fetch(`/api/anyadir/:${titulo}`, {
+                method:"PUT",    
+        })
+    }
+    </script>
+</body>
+</html>
